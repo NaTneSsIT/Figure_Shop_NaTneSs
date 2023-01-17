@@ -9,7 +9,8 @@
                 <h6><strong>{{ product.prd_name }}</strong></h6>
                 <hr>
                 <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Mua ngay</button>
-                <a class="btn btn-outline-success" href="#">Chi tiết</a>
+{#                <button data-product="{{ product.id }}" class="btn btn-outline-success">Chi tiết</button>#}
+                <a class="btn btn-outline-success" href="prodDetail/{{ product.id }}">Chi tiết</a>
                 <h4 style="display: inline-block; float: right">{{product.prd_price}}</h4>
             </div>
         </div>

@@ -8,3 +8,7 @@ admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
+admin.site.register(Movie)
+admin.site.register(product_Info)
+admin.site.register(product_review)
+

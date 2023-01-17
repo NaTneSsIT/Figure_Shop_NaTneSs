@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 class Customer(models.Model):
@@ -9,7 +10,16 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+class Movie(models.Model):
+    movie_name=models.CharField(max_length=200, null=True)
+    create_at=models.DateTimeField(auto_now_add=True)
+    update_at=models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.movie_name
+
 class Product(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.SET_NULL, blank=True, null=True)
     prd_name = models.CharField(max_length=200, null=True)
     prd_price = models.FloatField()
     digital = models.BooleanField(default=True,null=True,blank=True)
@@ -23,6 +33,15 @@ class Product(models.Model):
         except:
             url=""
         return url
+class product_Info(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+    size = models.CharField(max_length=20,null=True)
+    trademark=models.CharField(max_length=200,null=True)
+
+class product_review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+    score=models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
+    review=models.CharField(max_length=500,null=True)
 
 class Order(models.Model):
     customer=models.ForeignKey(Customer,on_delete=models.SET_NULL,blank=True,null=True)

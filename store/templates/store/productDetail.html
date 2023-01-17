@@ -1,0 +1,55 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <a class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190;Continue Shopping</a>
+<h1><strong>{{ product.prd_name }}</strong></h1>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+            <img class="thumbnail" src="{{ product.imageURL }}">
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-6">
+            <div class="box-element" id="form-wrapper">
+                <H1>Infomation product {{ product.prd_name }}</H1>
+                <div class="cart-column">
+         <h5>Size : <strong>{{ productD.size }}</strong></h5>
+         <h5>Trade mark :<strong>{{ productD.trademark }}</strong></h5>
+         <h5>Price : <strong>${{ product.prd_price }}</strong></h5>
+                </div>
+        </div>
+    </div>
+</div>
+    <div class="col-lg-12">
+    <h1>Reviews</h1>
+        {% for re in reviews %}
+            <section class="p-4 p-md-5 text-center text-lg-start shadow-1-strong rounded">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body m-3">
+          <div class="row">
+            <div class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
+              <img src="{{ re.product.imageURL }}"
+                class="rounded-circle img-fluid shadow-1" alt="woman avatar" width="200" height="200" />
+            </div>
+            <div class="col-lg-8">
+              <p class="text-muted fw-light mb-4">
+                {{ re.review }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock content %}
