@@ -16,9 +16,11 @@
             <div class="box-element" id="form-wrapper">
                 <H1>Infomation product {{ product.prd_name }}</H1>
                 <div class="cart-column">
-         <h5>Size : <strong>{{ productD.size }}</strong></h5>
-         <h5>Trade mark :<strong>{{ productD.trademark }}</strong></h5>
-         <h5>Price : <strong>${{ product.prd_price }}</strong></h5>
+                     <h5>Movie : <strong>{{ productD.product.movie }}</strong></h5>
+                     <h5>Size : <strong>{{ productD.size }}</strong></h5>
+                     <h5>Trade mark :<strong>{{ productD.trademark }}</strong></h5>
+                     <h5>Price : <strong>${{ product.prd_price }}</strong></h5>
+                    <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Mua ngay</button>
                 </div>
         </div>
     </div>

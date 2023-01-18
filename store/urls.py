@@ -7,4 +7,5 @@ urlpatterns=[
     path('checkout/',views.checkout,name="checkout"),
     path('update_item/',views.updateItem,name="update_item"),
     path('prodDetail/<int:id>',views.prodDetail,name="prodDetail"),
+    path('default/',views.default,name="default"),
 ]

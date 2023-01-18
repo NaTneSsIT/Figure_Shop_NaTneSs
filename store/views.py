@@ -4,6 +4,9 @@ from django.http import JsonResponse
 import json
 # Create your views here.
 
+def default(request):
+    context = {}
+    return render(request, "store/default.html", context)
 def store(request):
     if request.user.is_authenticated:
         customer=request.user.customer
@@ -19,10 +22,19 @@ def store(request):
     return render(request, "store/store.html", context)
 
 def prodDetail(request,id):
+    if request.user.is_authenticated:
+        customer=request.user.customer
+        order,created=Order.objects.get_or_create(customer=customer,complete=False)
+        items=order.orderitem_set.all()
+        cartItems=order.get_cart_items
+    else:
+        items=[]
+        order={'get_cart_total':0,'get_cart_items':0}
+        cartItems=order['get_cart_items']
     product=Product.objects.get(id=id)
     productD=product_Info.objects.get(product_id=id)
     reviews=product_review.objects.filter(product_id=id)
-    context = {'product':product,'reviews':reviews,'productD':productD}
+    context = {'product':product,'reviews':reviews,'productD':productD,'cartItems':cartItems}
     return render(request, "store/productDetail.html",context)
 
 def cart(request):
