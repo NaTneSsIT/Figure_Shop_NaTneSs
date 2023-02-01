@@ -5,10 +5,24 @@
 	<title>FIGURE SHOP</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
+    <link href="{% static 'font/fontawesome-free-6.2.1-web/css/all.css' %}" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script type="text/javascript">
+
+
+            window.addEventListener('load',()=>{
+                const loader = document.querySelector(".loader");
+
+                loader.classList.add("loader-hidden");
+
+                loader.addEventListener("transitionend",()=>{
+                    document.body.removeChild("loader");
+                })
+            });
+
+    </script>
     <script type="text/javascript">
         var user="{{ request.user }}"
 
@@ -32,9 +46,12 @@
 
 </head>
 <body>
+<div class="loader">
+</div>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
-  <a class="navbar-brand" href="{% url 'store' %}"><img src="{% static 'images/dragon.png' %}" alt="Logo" width="200" height="50" class="d-inline-block align-text-top" style="margin-left:50px "></a>
+  <a class="navbar-brand" href="{% url 'default' %}"><img src="{% static 'images/dragon.png' %}" alt="Logo" width="200" height="50" class="d-inline-block align-text-top" style="margin-left:50px "></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -66,6 +83,48 @@
 
                  {% endblock content %}
          </div>
+<footer class="section-p1">
+    <div class="col">
+        <img class="logo "src="{% static 'images/dragon.png' %}" width="200" height="50" />
+        <h4>Contact</h4>
+        <p><strong>Address:</strong>23 - Nguyen Huy Tuong - Suoi Hoa - Bac Ninh</p>
+        <p><strong>Phone:</strong>+84 813 393 999</p>
+        <p><strong>Hours:</strong>8:00 A.M - 8:00 P.M</p>
+        <div class="follow">
+            <h4>Follow us</h4>
+            <div class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-pinterest"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Infomation</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Infomation</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="col install">
+        <h4>Secured Payment Gateways</h4>
+        <img src="https://www.aaa-fta.com/wp-content/uploads/2015/03/Payment-gateway-logos-new1.png" height="50 px" width="300px">
+    </div>
+    <div class="copyright">
+        <p>Copyright 2023 © NaTneSs</p>
+    </div>
+</footer>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -3,7 +3,7 @@
 {% block default %}
      <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active" data-interval="2000">
+    <div class="carousel-item active" data-interval="4000">
       <img src="https://th.bing.com/th/id/R.817ef9376dd94cbf00dbc02cc854a2d3?rik=UuTWSA0uiLMz6A&pid=ImgRaw&r=0" class="d-block w-100" alt="..." style="height: 700px;">
         <div class="carousel-caption d-none d-md-block">
             <a href="{% url 'store' %}"><img src="{% static 'images/xx.png' %}" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1" style="width:300px;margin-top: -300px;"></a>
@@ -13,7 +13,7 @@
 {#        </div>#}
       </div>
     </div>
-    <div class="carousel-item" data-interval="2000">
+    <div class="carousel-item" data-interval="4000">
       <img src="https://images.wallpapersden.com/image/download/akatsuki-organization-anime_a2xqbGeUmZqaraWkpJRobWllrWdma2U.jpg" class="d-block w-100" alt="..." style="height: 700px;">
          <div class="carousel-caption d-none d-md-block">
             <a href="{% url 'store' %}"><img src="{% static 'images/pngegg.png' %}" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1" style="width:300px;margin-top: -300px;"></a>
@@ -26,4 +26,25 @@
   </div>
 
 </div>
+
 {% endblock default %}
+{% block content %}
+
+    <h1 align="center">Cac san pham HOT</h1>
+    <div class="row">
+
+     {% for product in products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{ product.imageURL }}">
+            <div class="box-element product">
+                <h6><strong>{{ product.prd_name }}</strong></h6>
+                <hr>
+                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Mua ngay</button>
+{#                <button data-product="{{ product.id }}" class="btn btn-outline-success">Chi tiết</button>#}
+                <a class="btn btn-outline-success" href="prodDetail/{{ product.id }}">Chi tiết</a>
+                <h4 style="display: inline-block; float: right">{{product.prd_price}}</h4>
+            </div>
+        </div>
+     {% endfor %}
+     </div>
+{% endblock content %}
